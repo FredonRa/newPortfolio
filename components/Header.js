@@ -43,7 +43,7 @@ const Header = (props) => {
                 </ul>
             </nav>
             <div className="navigation">
-                <input type="checkbox" className="navigation__checkbox" id="navi-toggle" checked={checked}  onClick={() => setChecked(true)}/>
+                <input type="checkbox" className="navigation__checkbox" id="navi-toggle" checked={checked}  onClick={() => setChecked(!checked)}/>
                 <label htmlFor="navi-toggle" className="navigation__button">
                     <span className="navigation__icon">&nbsp;</span>
                 </label>
