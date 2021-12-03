@@ -7,6 +7,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { SocialsArray } from './SocialsArray'
 import { Fade } from 'react-reveal';
 
+import BeatLoader from "react-spinners/BeatLoader";
+
 const _renderSocials = SocialsArray.map((social, index) => {
     if(social.name !== "CV") {
         return (  
@@ -14,7 +16,6 @@ const _renderSocials = SocialsArray.map((social, index) => {
         );
     }
 })
- 
 
 const Contact = () => {
     const [ email, setEmail ] = useState("")
@@ -23,13 +24,21 @@ const Contact = () => {
     const [ nameError, setNameError ] = useState("")
     const [ subject, setSubject ] = useState("") 
     const [ subjectError, setSubjectError ] = useState("")
-    const [ emailSend, setEmailSend ] = useState("")
+    const [ message, setMessage ] = useState("")
+    const [ pendingSend, setPendingSend ] = useState(false)
 
     const regex = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
 
+    const cleanInputs = () => {
+        setEmail("")
+        setName("")
+        setSubject("")
+        setMessage("")
+    }
+
     function sendEmail(e) {
         e.preventDefault();
-        setEmailSend("")
+        setPendingSend(true)
         var valid = true
         if (!email) {
             valid = false
@@ -59,8 +68,11 @@ const Contact = () => {
             emailjs.sendForm('service_q6lpm7q', 'template_042mktc', e.target, 'user_dsmdyG23Hd0fbXji75FuS')
               .then((result) => {
                 toast.success('Mensaje enviado con éxito!')
+                setPendingSend(false)
+                cleanInputs("")
               }, (error) => {
                 toast.error('Ocurrió un error, por favor vuelva a intentarlo en unos momentos')
+                setPendingSend(false)
               });
         }
     }
@@ -77,7 +89,6 @@ const Contact = () => {
                         className="input-field" 
                         pattern="\S+" 
                         name="user_name" 
-                        // onkeyup={this.setAttribute('value', this.value)}
                         value={name} 
                         onChange={(e) => setName(e.target.value)} 
                         required
@@ -91,7 +102,6 @@ const Contact = () => {
                         className="input-field" 
                         pattern="\S+" 
                         name="user_email" 
-                        // onkeyup={this.setAttribute('value', this.value)}
                         value={email} 
                         onChange={(e) => setEmail(e.target.value)} 
                         required
@@ -105,7 +115,6 @@ const Contact = () => {
                         className="input-field" 
                         pattern="\S+" 
                         value={subject} 
-                        // onkeyup={this.setAttribute('value', this.value)}
                         name="user_subject" 
                         onChange={(e) => setSubject(e.target.value)} 
                         required
@@ -117,13 +126,14 @@ const Contact = () => {
                         <textarea 
                         type="text" 
                         className="input-field" 
+                        value={message}
                         name="message"
+                        onChange={(e) => setMessage(e.target.value)} 
                         required
                          />
                         <label className="input-label">Mensaje</label>
                     </div>
-                    <p style={{color: "#2e2e2e"}}>{emailSend}</p>
-                    <button type="submit" className="input-button">Enviar</button>
+                    <button type="submit" disabled={pendingSend ? true : false} className="input-button">{ pendingSend ? <BeatLoader size={12} style={{fontWeight: "100"}} /> : "Enviar" }</button>
                 </form>
                 </Fade>
                 <div className="other-contacts">

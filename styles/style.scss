@@ -511,20 +511,32 @@ $color-grey-dark-3: #B0BEC5;
             }
             .input-button {
                 border: none;
-                padding: 10px 10px;
+                // padding: 10px 10px;
                 border-radius: 10px;
                 cursor: pointer;
+                height: 40px;
                 margin-top: 1rem;
                 background-color: #fff;
                 color: #2e2e2e;
                 transition: all .2s;
                 font-size: 16px;
                 font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 &:focus, &:valid, &:active {
                     outline: none;
                 }
                 &:hover {
                     filter: drop-shadow(2px 4px 6px rgba(0,0,0,.2));
+                }
+                &:disabled {
+                    cursor: no-drop;
+                }
+                span {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
             p {
