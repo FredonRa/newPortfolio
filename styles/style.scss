@@ -79,8 +79,8 @@ $color-grey-dark-3: #B0BEC5;
 
     &__button {
         background-color: $color-white;
-        height: 4rem;
-        width: 4rem;
+        height: 3.2rem;
+        width: 3.2rem;
         position: fixed;
         top: 20px;
         right: 20px;
@@ -93,8 +93,8 @@ $color-grey-dark-3: #B0BEC5;
     }
 
     &__background {
-        height: 4rem;
-        width: 4rem;
+        height: 3.2rem;
+        width: 3.2rem;
         border-radius: 50%;
         position: fixed;
         top: 20px;
@@ -127,6 +127,18 @@ $color-grey-dark-3: #B0BEC5;
         text-align: center;
         width: 100%;
         padding: 0;
+        hr {
+            width: 100px;
+            background-color: transparent;
+            border: solid 1px #f1f2f3;
+            margin:  15px auto 30px auto;
+            align-self: center;
+        }
+        button {
+            &:active, &:focus { 
+                outline: none;
+            }
+        }
     }
 
     &__item {
@@ -178,16 +190,15 @@ $color-grey-dark-3: #B0BEC5;
         height: 100vh;
     }
 
-
     //ICON
     &__icon {
         position: relative;
-        margin-top: 2rem;
+        margin-top: 1.6rem;
 
         &,
         &::before,
         &::after {
-            width: 2.2rem;
+            width: 1.5rem;
             height: 2px;
             background-color: $color-grey-dark-3;
             display: inline-block;
@@ -507,6 +518,8 @@ $color-grey-dark-3: #B0BEC5;
                 background-color: #fff;
                 color: #2e2e2e;
                 transition: all .2s;
+                font-size: 16px;
+                font-weight: 500;
                 &:focus, &:valid, &:active {
                     outline: none;
                 }

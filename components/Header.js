@@ -55,9 +55,7 @@ const Header = (props) => {
                         <li className="navigation__item"><a onClick={() => setChecked(false)} href="#habilities" className="navigation__link"><span>03</span>Habilidades</a></li>
                         <li className="navigation__item"><a onClick={() => setChecked(false)} href="#projects" className="navigation__link"><span>04</span>Proyectos</a></li>
                         <li className="navigation__item"><a onClick={() => setChecked(false)} href="#contact" className="navigation__link"><span>05</span>Contacto</a></li>
-                        <li className="navigation__item">
-                            {_renderSocials}
-                        </li>
+                        <li><hr /></li>
                         <li>
                             <button className="change-theme" onClick={props.toggleTheme}>
                                 {props.theme == 'light' ? (
