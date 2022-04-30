@@ -1,6 +1,7 @@
 import React from 'react';
 import { HabilitiesArray } from './HabilitiesArray'
 import { Fade } from 'react-reveal'
+import Image from "next/image"
 
 const _renderIcons = HabilitiesArray.map((hability, index) => {
     return(
@@ -18,7 +19,7 @@ const Welcome = () => {
                     <h1>Hola! Soy Fede</h1>
                 </Fade>
                 <Fade top>
-                    <h2>Desarrollador Front End y Mobile</h2>
+                    <h2>Desarrollador Front End</h2>
                 </Fade>
                 <div className="containerIcons">
                     {_renderIcons}
@@ -26,9 +27,11 @@ const Welcome = () => {
             </div>
             <div className="photo">
                 <Fade top >
-                    <img 
-                    src='/Sample.png' 
-                    style={{maxWidth: 550}}
+                    <Image 
+                        src='/meAsCartoon.png' 
+                        width={450}
+                        height={450}
+                        alt={"Yo en dibujito jaja"}
                     />
                 </Fade>
             </div>
